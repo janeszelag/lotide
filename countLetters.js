@@ -11,14 +11,14 @@ const countLetters = function(string) {
   let noSpaces = string.toLowerCase().split(" ").join("");
 
   for (let letter of noSpaces) {
-    if (letterObject.hasOwnProperty(letter) === false) {
-      letterObject[letter] = 1;
+    if (letterObject[letter]) {
+      letterObject[letter] += 1;
     } else {
-      letterObject[letter] = letterObject[letter] + 1
+      letterObject[letter] = 1;
     }
   }
-  return letterObject; 
-}
+  return letterObject;
+};
 console.log(countLetters("lighthouse in the house"));
 
 // console.log(assertEqual(countLetters("lighthouse in the house"), {
