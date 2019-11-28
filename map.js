@@ -13,11 +13,11 @@ const eqArrays = function(arr1, arr2) {
   return true;
 };
 
-const assertArraysEqual = function(arr1, arr2) {
-  if (eqArrays(arr1, arr2)) {
-    console.log(`✅✅✅Assertion Passed: ${arr1} === ${arr2}`);
+const assertArraysEqual = function(actual, expected) {
+  if (eqArrays(actual, expected)) {
+    console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);
   } else {
-    console.log(`❌❌❌Assertion Failed: ${arr1} !== ${arr2}`);
+    console.log(`❌❌❌Assertion Failed: ${actual} !== ${expected}`);
   }
 };
 
@@ -35,3 +35,13 @@ function map(array, callback) {
 }
 const results1 = map(words, word => word[0]);
 console.log(results1);
+
+
+const cars = ['honda', 'toyota', 'porshe'];
+//expected ['HONDA', 'TOYOTA', 'PORSHE']
+assertArraysEqual(map(cars, car => car.toUpperCase()), ['HONDA', 'TOYOTA', 'PORSHE'])
+
+
+const youTube = ['H3H3', 'Trisha', 'Joe Rogan'];
+//expected ['H3H3 is great', 'Trisha is great', 'Joe Rogan is great']
+assertArraysEqual(map(youTube, influencer => influencer += ' is great'), ['H3H3 is great', 'Trisha is great', 'Joe Rogan is great']);
