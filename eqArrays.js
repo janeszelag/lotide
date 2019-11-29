@@ -7,20 +7,40 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(arr1, arr2) {
-  let longestLength = 0;
-  if (arr1.length > arr2.length) {
-    longestLength = arr1.length;
-  } else {
-    longestLength = arr2.length;
+
+  if (arr1.length !== arr2.length) {
+    return false;
   }
-  for (i = 0; i < longestLength; i++) {
-    if (arr1[i] !== arr2[i]) {
+  
+  for (let i = 0; i < arr1.length; i++) {
+
+    if (!Array.isArray(arr1[i]) && !Array.isArray(arr2[i])) {
+      
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+
+    } else if (Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
+      let result = eqArrays(arr1[i], arr2[i]);
+      if (!result) {
+        return false;
+      }
+        
+    } else if (Array.isArray(arr1[i]) || Array.isArray(arr2[i])) {
       return false;
     }
   }
-  return true; 
-} 
-console.log(eqArrays([1, 2, 3], [1, 2, 3, 4]));
+
+  return true;
+};
+//console.log(eqArrays([1, 2, 3], [1, 2, 3, 4]));
 
 
-assertEqual(eqArrays([1, 2, 3, 4], [1, 2, 3]), true);
+//assertEqual(eqArrays([1, 2, 3, 4], [1, 2, 3]), true);
+
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);// => true
+
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false); // => false
+//comparing [[2, 3], [4]]
+//[[2, 3], [4, 5]]
+assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false);
