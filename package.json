@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@janeszelag/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "lotide project from lighthouselabs",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/janeszelag/lotide.git"
   },
-  "author": "",
+  "author": {"name": "Katherine Szelag" },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/janeszelag/lotide/issues"
